@@ -1,1 +1,1 @@
-# Composition of Components Task 2
+# Pagination Task 2
