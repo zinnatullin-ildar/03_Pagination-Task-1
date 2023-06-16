@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 const Bookmark = ({ id, status, onToggle }) => {
@@ -11,7 +10,7 @@ const Bookmark = ({ id, status, onToggle }) => {
 
 Bookmark.propTypes = {
     id: PropTypes.string.isRequired,
-    status: PropTypes.bool.isRequired,
+    status: PropTypes.bool,
     onToggle: PropTypes.func.isRequired
 };
 

@@ -1,65 +1,62 @@
-import React from "react";
 import Qualitie from "./qualitie";
 import Bookmark from "./bookmark";
 import { v4 as uuid } from "uuid";
 import PropTypes from "prop-types";
 
-const User = ({ userCrop, onDelete, onToggle }) => {
+const User = ({
+    _id,
+    name,
+    qualities,
+    profession,
+    completedMeetings,
+    rate,
+    onDelete,
+    bookmark,
+    onToggleBookmark
+}) => {
     return (
-        <>
-            <thead>
-                <tr>
-                    <th scope="col">Имя</th>
-                    <th scope="col">Качества</th>
-                    <th scope="col">Профессия</th>
-                    <th scope="col">Встретился, раз</th>
-                    <th scope="col">Оценка</th>
-                    <th scope="col">Избранное</th>
-                    <th />
-                </tr>
-            </thead>
-            <tbody>
-                {userCrop.map((user) => (
-                    <tr key={uuid()}>
-                        <th scope="row">{user.name}</th>
-                        <td>
-                            {user.qualities.map((qualitie) => (
-                                <Qualitie
-                                    key={uuid()}
-                                    color={qualitie.color}
-                                    name={qualitie.name}
-                                />
-                            ))}
-                        </td>
-                        <td>{user.profession.name}</td>
-                        <td>{user.completedMeetings}</td>
-                        <td>{user.rate} / 5</td>
-                        <td>
-                            <Bookmark
-                                id={user._id}
-                                status={user.bookmark}
-                                onToggle={onToggle}
-                            />
-                        </td>
-                        <td>
-                            <button
-                                className="btn btn-danger btn-sm m-2"
-                                onClick={() => onDelete(user._id)}
-                            >
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
+        <tr>
+            <td>{name}</td>
+            <td>
+                {qualities.map((qualitie) => (
+                    <Qualitie
+                        {...qualitie}
+                        key={uuid()}
+                    />
                 ))}
-            </tbody>
-        </>
+            </td>
+            <td>{profession.name}</td>
+            <td>{completedMeetings}</td>
+            <td>{rate} / 5</td>
+            <td>
+                <Bookmark
+                    id={_id}
+                    status={bookmark}
+                    onToggle={onToggleBookmark}
+                />
+            </td>
+            <td>
+                <button
+                    className="btn btn-danger btn-sm m-2"
+                    onClick={() => onDelete(_id)}
+                >
+                    Delete
+                </button>
+            </td>
+        </tr>
     );
 };
 
 User.propTypes = {
-    userCrop: PropTypes.array.isRequired,
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    qualities: PropTypes.array,
+    profession: PropTypes.object.isRequired,
+    completedMeetings: PropTypes.number.isRequired,
+    rate: PropTypes.number.isRequired,
     onDelete: PropTypes.func.isRequired,
-    onToggle: PropTypes.func.isRequired
+    bookmark: PropTypes.bool,
+    onToggleBookmark: PropTypes.func.isRequired
 };
 
 export default User;

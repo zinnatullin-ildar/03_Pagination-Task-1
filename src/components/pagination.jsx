@@ -1,4 +1,3 @@
-import React from "react";
 import _ from "lodash";
 import { v4 as uuid } from "uuid";
 import PropTypes from "prop-types"; // сниппет impt

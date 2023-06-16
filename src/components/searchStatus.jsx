@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 
 const SearchStatus = ({ length }) => {
@@ -30,7 +29,7 @@ const SearchStatus = ({ length }) => {
 };
 
 SearchStatus.propTypes = {
-    length: PropTypes.number.isRequired
+    length: PropTypes.number
 };
 
 export default SearchStatus;

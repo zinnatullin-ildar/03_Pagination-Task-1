@@ -3,16 +3,27 @@ module.exports = {
         browser: true,
         es2021: true
     },
-    extends: ["standard", "plugin:react/recommended"],
+    extends: [
+        "standard",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime"
+    ],
+    settings: {
+        react: {
+            version: "detect"
+        }
+    },
     parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module"
     },
     plugins: ["react"],
     rules: {
-        indent: ["error", 4], // отступ - количество пробелов
+        indent: ["error", 4], // отступ, количество пробелов
         semi: [2, "always"], // точка с запятой в конце строки
-        "space-before-function-paren": ["error", "never"], // убираем пробел при обозночении функции
-        quotes: ["error", "double", { allowTemplateLiterals: true }] // использование двойных и обратных кавычек
+        quotes: ["error", "double", { allowTemplateLiterals: true }], // использование двойных и обратных кавычек
+        "space-before-function-paren": ["error", "never"], // убираем пробел при обозначении функции
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off"
     }
 };
